@@ -66,9 +66,11 @@ spec:
             - /jobstatus/jobok
           initialDelaySeconds: 5
           periodSeconds: 3
+        {%- if cluster_cfg['cluster']['common']['qos-switch'] == "true" %}
         resources:
           limits:
             memory: "4Gi"
+        {%- endif %}
         env:
         - name: POD_IP
           valueFrom:
